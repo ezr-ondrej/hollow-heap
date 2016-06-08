@@ -12,9 +12,9 @@ before_script:
  - cd test/
  - which sh
 script: "sh ./.travis_build.sh"
-branches:
-  only:
-    - develop
+# branches:
+#   only:
+#     - develop
 notifications:
   recipients:
     - ezrondre@fit.cvut.cz
