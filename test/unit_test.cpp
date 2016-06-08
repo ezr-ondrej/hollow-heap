@@ -3,7 +3,7 @@
 
 #define private public
 #define protected public
-#include "hollow_heap.hpp"
+#include "../hollow_heap.hpp"
 
 
 namespace {

@@ -18,7 +18,7 @@ build: libhollowheap.a
 test: build_test
 	./test/unit_test
 
-build_test: test.cpp libhollowheap.a
+build_test: test/unit_test.cpp libhollowheap.a
 	${CXX} ${CPPFLAGS} $(CXXFLAGS) ${OPT} -I${GTEST_PATH}/include test/unit_test.cpp -o test/unit_test -pthread -L${GTEST_PATH} -lgtest -D_ELPP_DEFAULT_LOG_FILE='"logs/el.gtest.log"'
 
 libhollowheap.a: hollow_heap.o
