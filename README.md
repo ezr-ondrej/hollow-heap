@@ -2,4 +2,4 @@
 Implementation of hollow heap for C++
 
 ## License
-GNU2
+See LICENSE file for license information.

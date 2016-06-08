@@ -1,6 +1,6 @@
 OBJECTS_DIR = objects
 
-GTEST_PATH="/home/ondra/Documents/Projekty/googletest/googletest"
+GTEST_PATH ?= "/home/ondra/Documents/Projekty/googletest/googletest"
 
 # Flags passed to the preprocessor.
 # CPPFLAGS += -I$(GTEST_DIR)/include
@@ -15,9 +15,11 @@ OPT=-O2
 
 build: libhollowheap.a
 
-test: test.cpp libhollowheap.a
-	${CXX} ${CPPFLAGS} $(CXXFLAGS) ${OPT} -I${GTEST_PATH}/include test.cpp -o tests -pthread -L${GTEST_PATH} -lgtest
-	./tests
+test: build_test
+	./test/unit_test
+
+build_test: test.cpp libhollowheap.a
+	${CXX} ${CPPFLAGS} $(CXXFLAGS) ${OPT} -I${GTEST_PATH}/include test/unit_test.cpp -o test/unit_test -pthread -L${GTEST_PATH} -lgtest -D_ELPP_DEFAULT_LOG_FILE='"logs/el.gtest.log"'
 
 libhollowheap.a: hollow_heap.o
 	ar rcs libhollowheap.a ${OBJECTS_DIR}/hollow_heap.o

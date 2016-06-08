@@ -45,21 +45,6 @@ CHollowHeap<K,T> & CHollowHeap<K,T>::Meld( CHollowHeap<K,T> & other )
   return Meld( other_root );
 }
 
-template<typename K, typename T>
-CHollowHeap<K,T> & CHollowHeap<K,T>::Meld( CHollowHeap<K,T>::TNode * other )
-{
-  if( !other ) { // second is empty
-    return *this;
-  }
-  if( !m_root ) { // I am empty, second is not
-    m_root = other;
-  } else { // none is empty
-    m_root = link(m_root, other);
-  }
-  return *this;
-}
-
-
 
 template<typename K, typename T>
 void CHollowHeap<K,T>::DecreaseKey( const K & key, const T & item )
@@ -75,6 +60,19 @@ void CHollowHeap<K,T>::Delete( const T & item )
 }
 
 
+template<typename K, typename T>
+CHollowHeap<K,T> & CHollowHeap<K,T>::Meld( CHollowHeap<K,T>::TNode * other )
+{
+  if( !other ) { // second is empty
+    return *this;
+  }
+  if( !m_root ) { // I am empty, second is not
+    m_root = other;
+  } else { // none is empty
+    m_root = link(m_root, other);
+  }
+  return *this;
+}
 //------------------------ PRIVATE METHODS ------------------------
 
 template<typename K, typename T>

@@ -1,0 +1,25 @@
+
+language: cpp
+compiler:
+  - gcc
+before_install:
+ - sudo apt-get update
+ - sudo apt-get install libgtest-dev
+ - "cd /usr/src/gtest && sudo cmake . && sudo cmake --build . && sudo mv libg* /usr/local/lib/ ; cd -"
+before_script:
+ - pwd
+ - make build_test
+ - cd test/
+ - which sh
+script: "sh ./.travis_build.sh"
+branches:
+  only:
+    - develop
+notifications:
+  recipients:
+    - ezrondre@fit.cvut.cz
+  email:
+    on_success: change
+    on_failure: always
+rvm:
+  - 9.00

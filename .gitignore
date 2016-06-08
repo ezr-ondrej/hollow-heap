@@ -26,4 +26,4 @@
 *.exe
 *.out
 *.app
-tests
+test/unit_test
