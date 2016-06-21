@@ -46,7 +46,7 @@ public:
   CHollowHeap & Meld( CHollowHeap & other );
 
 
-  void DecreaseKey( const K & key, const T & item );
+  void DecreaseKey( CHollowHeap<K,T>::TNode * to_decrease, const K & key );
 
 
   CHollowHeap & Delete( TNode * to_delete );

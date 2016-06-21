@@ -171,6 +171,12 @@ TEST_F(CHollowHeapTest, FindMinAfterMeld) {
   EXPECT_EQ( "third -1", *res );
 }
 
+TEST_F(CHollowHeapTest, DecreaseKeyUnderRoot) {
+  InsertDefault();
+  mainheap.DecreaseKey( mainheap.m_root->child, 2 );
+  EXPECT_EQ( 2, mainheap.m_root->child->key );
+}
+
 }  // namespace
 
 int main(int argc, char **argv) {

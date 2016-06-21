@@ -1,7 +1,5 @@
 #include "hollow_heap.hpp"
 
-#include <iostream>
-
 
 template<typename K, typename T>
 CHollowHeap<K,T>::CHollowHeap()
@@ -53,9 +51,23 @@ CHollowHeap<K,T> & CHollowHeap<K,T>::Meld( CHollowHeap<K,T> & other )
 
 
 template<typename K, typename T>
-void CHollowHeap<K,T>::DecreaseKey( const K & key, const T & item )
+void CHollowHeap<K,T>::DecreaseKey( CHollowHeap<K,T>::TNode * to_decrease, const K & key )
 {
-
+  if( to_decrease == m_root ) {
+    m_root->key = key;
+    return;
+  }
+  TNode * new_node = makeNode( key, to_decrease->item);
+  to_decrease->hollow = true;
+  if( to_decrease->rank > 2 )
+    new_node->rank = to_decrease->rank - 2;
+  if( key > m_root->key ) {
+    new_node->child = to_decrease;
+    to_decrease->second_parent = new_node;
+  } else {
+    to_decrease->second_parent = NULL;
+  }
+  m_root = link( new_node, m_root );
 }
 
 
