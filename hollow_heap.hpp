@@ -10,11 +10,13 @@ class CHollowHeap
 {
 public:
   struct TNode {
+    TNode * second_parent;
     TNode * next;
     TNode * child;
     int rank;
     K key;
     T item;
+    bool hollow;
   };
 
 public:
@@ -47,7 +49,7 @@ public:
   void DecreaseKey( const K & key, const T & item );
 
 
-  void Delete( const T & item );
+  CHollowHeap & Delete( TNode * to_delete );
 
 
 protected:
@@ -61,8 +63,11 @@ private:
 
   void addChild( TNode * child, TNode * parent );
 
+  void delete_node( TNode * to_delete );
+
 private:
   TNode * m_root;
+  int m_count;
 };
 
 #include "hollow_heap.cpp"
