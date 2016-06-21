@@ -28,7 +28,11 @@ public:
 
   ~CHollowHeap();
 
-
+  /**
+   * @brief      Find minimum in heap
+   *
+   * @return     Returns an value with a minimum key
+   */
   T * FindMin();
 
   /**
@@ -40,15 +44,40 @@ public:
   void Insert( const K & key, const T & item );
 
 
+  /**
+   * @brief      DeleteMin
+   *
+   * Deletes a minimum from a heap
+   *
+   * @return     returns deleted value
+   */
   T DeleteMin();
 
-
+  /**
+   * @brief      Melds two heaps into one.
+   *
+   * @param      other  heap with same types to meld from.
+   *
+   * @return     returns self
+   */
   CHollowHeap & Meld( CHollowHeap & other );
 
 
+  /**
+   * @brief      DecreaseKey of given node
+   *
+   * @param      to_decrease  node, witch key shold be decreased
+   * @param[in]  key          to decrease to
+   */
   void DecreaseKey( CHollowHeap<K,T>::TNode * to_decrease, const K & key );
 
-
+  /**
+   * @brief      Delete a given node from a Heap
+   *
+   * @param      to_delete  node to delete
+   *
+   * @return     self
+   */
   CHollowHeap & Delete( TNode * to_delete );
 
 
