@@ -27,3 +27,6 @@
 *.out
 *.app
 test/unit_test
+
+#generated documentation
+doc/
