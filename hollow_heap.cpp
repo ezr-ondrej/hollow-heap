@@ -19,9 +19,10 @@ CHollowHeap<K,T>::~CHollowHeap()
 
 
 template<typename K, typename T>
-T CHollowHeap<K,T>::FindMin()
+T * CHollowHeap<K,T>::FindMin()
 {
-
+  if( m_root == NULL ) return NULL;
+  else return &(m_root->item);
 }
 
 

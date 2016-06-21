@@ -29,7 +29,7 @@ public:
   ~CHollowHeap();
 
 
-  T FindMin();
+  T * FindMin();
 
   /**
    * @brief      Insert key / item pair into the heap

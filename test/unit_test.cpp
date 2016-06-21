@@ -157,6 +157,20 @@ TEST_F(CHollowHeapTest, DeleteMin) {
   EXPECT_EQ( 3, node->key );
 }
 
+TEST_F(CHollowHeapTest, FindMin) {
+  InsertDefault();
+  std::string * res = mainheap.FindMin();
+  EXPECT_EQ( "any 0", *res );
+}
+
+
+TEST_F(CHollowHeapTest, FindMinAfterMeld) {
+  InsertDefault();
+  mainheap.Meld( *getThirdHeap() );
+  std::string * res = mainheap.FindMin();
+  EXPECT_EQ( "third -1", *res );
+}
+
 }  // namespace
 
 int main(int argc, char **argv) {
